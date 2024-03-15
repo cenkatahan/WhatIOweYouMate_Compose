@@ -15,3 +15,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "WhatIOweYouMate_Compose"
 include(":app")
+include(":core")
+include(":feature")
+include(":feature:home")
+include(":feature:add")
+include(":feature:update")
+include(":feature:summary")
