@@ -49,4 +49,10 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+
+    implementation(Dependency.nav_ui_ktx)
+    implementation(Dependency.nav_fragment_ktx)
+    implementation(Dependency.nav_dynamic)
+
 }
