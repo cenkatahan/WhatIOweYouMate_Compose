@@ -2,11 +2,12 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
     namespace = "com.ata.core"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 29
@@ -74,5 +75,9 @@ dependencies {
     implementation(Dependency.room_runtime)
     annotationProcessor(Dependency.room_compiler)
     kapt(Dependency.room_compiler_kapt)
+
+    implementation(Dependency.hilt)
+    kapt(Dependency.hilt_compiler)
+    implementation(Dependency.hilt_nav)
 
 }

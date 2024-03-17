@@ -8,4 +8,8 @@ object Dependency {
     const val room_compiler = "androidx.room:room-runtime:${Version.room_version}"
     const val room_compiler_kapt = "androidx.room:room-runtime:${Version.room_version}"
 
+    const val hilt = "com.google.dagger:hilt-android:${Version.hilt_version}"
+    const val hilt_compiler = "com.google.dagger:hilt-android-compiler:${Version.hilt_version}"
+    const val hilt_nav = "androidx.hilt:hilt-navigation-fragment:${Version.hilt_nav_version}"
+
 }
