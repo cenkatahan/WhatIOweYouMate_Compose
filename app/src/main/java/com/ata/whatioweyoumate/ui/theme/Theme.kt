@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.ata.core.ui.theme.OweBackground
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -57,8 +58,11 @@ fun WhatIOweYouMate_ComposeTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            window.statusBarColor = when(darkTheme) {
+                false -> OweBackground.lightColor.toArgb()
+                true -> OweBackground.darkColor.toArgb()
+            }
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 
