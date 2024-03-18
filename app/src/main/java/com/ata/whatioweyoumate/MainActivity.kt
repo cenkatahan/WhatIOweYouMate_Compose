@@ -29,7 +29,6 @@ class MainActivity : ComponentActivity() {
                     color = OweBackground.color(),
                 ) {
                     Column {
-                        Greeting("Android")
                         OweButton(text = "BUTTON")
                         OweText(text = "TEXT")
                     }
@@ -39,18 +38,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     WhatIOweYouMate_ComposeTheme {
-        Greeting("Android")
     }
 }

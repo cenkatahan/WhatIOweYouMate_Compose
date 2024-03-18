@@ -72,12 +72,12 @@ dependencies {
     implementation(Dependency.nav_fragment_ktx)
     implementation(Dependency.nav_dynamic)
 
-    implementation(Dependency.room_runtime)
+    api(Dependency.room_runtime)
     annotationProcessor(Dependency.room_compiler)
     kapt(Dependency.room_compiler_kapt)
 
-    implementation(Dependency.hilt)
+    api(Dependency.hilt)
     kapt(Dependency.hilt_compiler)
-    implementation(Dependency.hilt_nav)
+    api(Dependency.hilt_nav)
 
 }
