@@ -74,6 +74,10 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     implementation(project(Module.core))
+    implementation(project(Module.home))
+    implementation(project(Module.add))
+    implementation(project(Module.update))
+    implementation(project(Module.summary))
 
     implementation(Dependency.hilt)
     kapt(Dependency.hilt_compiler)

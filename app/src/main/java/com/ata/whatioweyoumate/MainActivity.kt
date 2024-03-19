@@ -11,9 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.ata.core.ui.component.OweButton
 import com.ata.core.ui.component.OweText
 import com.ata.core.ui.theme.OweBackground
+import com.ata.whatioweyoumate.navigation.AppNav
 import com.ata.whatioweyoumate.ui.theme.WhatIOweYouMate_ComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,10 +30,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = OweBackground.color(),
                 ) {
-                    Column {
-                        OweButton(text = "BUTTON")
-                        OweText(text = "TEXT")
-                    }
+                    val navController = rememberNavController()
+                    AppNav(navController = navController)
+
                 }
             }
         }

@@ -68,9 +68,10 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
 
-    implementation(Dependency.nav_ui_ktx)
-    implementation(Dependency.nav_fragment_ktx)
-    implementation(Dependency.nav_dynamic)
+    api(Dependency.nav_ui_ktx)
+    api(Dependency.nav_fragment_ktx)
+    api(Dependency.nav_dynamic)
+    api(Dependency.nav_compose)
 
     api(Dependency.room_runtime)
     annotationProcessor(Dependency.room_compiler)
@@ -79,5 +80,7 @@ dependencies {
     api(Dependency.hilt)
     kapt(Dependency.hilt_compiler)
     api(Dependency.hilt_nav)
+
+    api(Dependency.material_extended)
 
 }
