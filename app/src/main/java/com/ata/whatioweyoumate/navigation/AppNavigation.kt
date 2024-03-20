@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.ata.add.AddScreen
 import com.ata.home.HomeScreen
+import com.ata.update.UpdateScreen
 
 @Composable
 fun AppNav(
@@ -24,7 +25,7 @@ fun AppNav(
             )
         }
         composable(route = Screen.Add.name) { AddScreen() }
-        composable(route = Screen.Update.name) { }
+        composable(route = Screen.Update.name) { UpdateScreen() }
         composable(route = Screen.Summary.name) { }
     }
 

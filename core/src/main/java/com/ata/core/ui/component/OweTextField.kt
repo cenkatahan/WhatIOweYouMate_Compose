@@ -1,4 +1,4 @@
-package com.ata.add.component
+package com.ata.core.ui.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons

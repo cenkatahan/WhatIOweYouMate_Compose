@@ -1,6 +1,5 @@
-package com.ata.add
+package com.ata.update
 
-import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,22 +21,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ata.core.ui.component.OweTextField
 import com.ata.core.ui.component.OweButton
 import com.ata.core.ui.component.OweOutlinedButton
 import com.ata.core.ui.component.OweText
+import com.ata.core.ui.component.OweTextField
 import com.ata.core.ui.theme.OweGreen
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AddScreen() {
-
+fun UpdateScreen() {
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
 
         OweText(
-            text = "Add Friend",
+            text = "Update Friend",
             fontSize = 48.sp,
             fontWeight = FontWeight.SemiBold
         )
@@ -102,6 +99,6 @@ fun AddScreen() {
     showSystemUi = true
 )
 @Composable
-private fun AddPrev() {
-    AddScreen()
+private fun OweButtonPrev() {
+    UpdateScreen()
 }
