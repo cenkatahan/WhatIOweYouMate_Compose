@@ -52,20 +52,21 @@ kapt {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.activity:activity-compose:1.8.2")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    api(Dependency.lifecycle_runtime)
+    api(Dependency.compose_activity)
+    api(platform(Dependency.compose_bom))
+    api(Dependency.compose_ui)
+    api(Dependency.compose_ui_graphics)
+    api(Dependency.compose_ui_tooling_preview)
+    api(Dependency.materil3)
+    androidTestApi(Dependency.espresso)
+    androidTestApi(platform(Dependency.compose_bom))
+    androidTestApi(Dependency.jUnit)
+    debugApi(Dependency.dbg_compose_ui_tooling)
+    debugApi(Dependency.dbg_compose_ui_test_manifest)
 
 
     api(Dependency.nav_ui_ktx)

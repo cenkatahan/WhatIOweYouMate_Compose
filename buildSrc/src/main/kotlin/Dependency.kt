@@ -1,8 +1,10 @@
 object Dependency {
 
-    const val nav_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:${Version.nav_version}"
+    const val nav_fragment_ktx =
+        "androidx.navigation:navigation-fragment-ktx:${Version.nav_version}"
     const val nav_ui_ktx = "androidx.navigation:navigation-ui-ktx:${Version.nav_version}"
-    const val nav_dynamic = "androidx.navigation:navigation-dynamic-features-fragment:${Version.nav_version}"
+    const val nav_dynamic =
+        "androidx.navigation:navigation-dynamic-features-fragment:${Version.nav_version}"
     const val nav_compose = "androidx.navigation:navigation-compose:${Version.nav_version}"
 
 
@@ -15,5 +17,23 @@ object Dependency {
     const val hilt_nav = "androidx.hilt:hilt-navigation-fragment:${Version.hilt_nav_version}"
 
     const val material_extended = "androidx.compose.material:material-icons-extended"
+
+    const val lifecycle_runtime =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycle_runtime_ktx}"
+
+    const val compose_activity = "androidx.activity:activity-compose:${Version.compose_activity}"
+    const val compose_bom = "androidx.compose:compose-bom:${Version.compose_bom}"
+    const val compose_ui = "androidx.compose.ui:ui"
+    const val compose_ui_graphics = "androidx.compose.ui:ui-graphics"
+    const val compose_ui_tooling_preview = "androidx.compose.ui:ui-tooling-preview"
+
+    const val materil3 = "androidx.compose.material3:material3"
+
+    const val espresso = "androidx.test.espresso:espresso-core:${Version.espresso_core}"
+
+    const val jUnit = "androidx.compose.ui:ui-test-junit4"
+
+    const val dbg_compose_ui_tooling = "androidx.compose.ui:ui-tooling"
+    const val dbg_compose_ui_test_manifest = "androidx.compose.ui:ui-test-manifest"
 
 }
