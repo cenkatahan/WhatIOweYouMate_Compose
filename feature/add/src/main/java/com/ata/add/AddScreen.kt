@@ -1,5 +1,6 @@
 package com.ata.add
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,68 +14,85 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Money
 import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ata.add.component.OweTextField
 import com.ata.core.ui.component.OweButton
 import com.ata.core.ui.component.OweOutlinedButton
+import com.ata.core.ui.component.OweText
 import com.ata.core.ui.theme.OweGreen
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddScreen() {
+
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center
+        modifier = Modifier.padding(16.dp)
     ) {
 
-        OweTextField(
-            value = "",
-            label = { Text(text = "Name", color = OweGreen.color()) },
-            onValueChange = {},
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Rounded.Person,
-                    contentDescription = null,
-                    tint = OweGreen.color()
-                )
-            }) {
-
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-        OweTextField(
-            value = "",
-            label = { Text(text = "Cost", color = OweGreen.color()) },
-            onValueChange = {},
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Rounded.Money,
-                    contentDescription = null,
-                    tint = OweGreen.color()
-                )
-            }) {
-
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth()
+        OweText(
+            text = "Add Friend",
+            fontSize = 48.sp,
+            fontWeight = FontWeight.SemiBold
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center
         ) {
-            OweOutlinedButton(
-                modifier = Modifier.fillMaxWidth(0.4f),
-                text = "Dismiss"
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            OweButton(
-                modifier = Modifier.fillMaxWidth(1f),
-                text = "Add"
-            )
+
+            OweTextField(
+                value = "",
+                label = { Text(text = "Name", color = OweGreen.color()) },
+                onValueChange = {},
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Rounded.Person,
+                        contentDescription = null,
+                        tint = OweGreen.color()
+                    )
+                }) {
+
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            OweTextField(
+                value = "",
+                label = { Text(text = "Cost", color = OweGreen.color()) },
+                onValueChange = {},
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Rounded.Money,
+                        contentDescription = null,
+                        tint = OweGreen.color()
+                    )
+                }) {
+
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                OweOutlinedButton(
+                    modifier = Modifier.fillMaxWidth(0.4f),
+                    text = "Dismiss"
+                )
+                Spacer(modifier = Modifier.width(16.dp))
+                OweButton(
+                    modifier = Modifier.fillMaxWidth(1f),
+                    text = "Add"
+                )
+            }
         }
     }
 }

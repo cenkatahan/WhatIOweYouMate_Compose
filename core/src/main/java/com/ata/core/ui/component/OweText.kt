@@ -26,7 +26,7 @@ fun OweText(
         fontSize = fontSize,
         fontWeight = fontWeight,
         maxLines = maxLines,
-        textAlign = textAlign
+        textAlign = textAlign,
 
     )
 
