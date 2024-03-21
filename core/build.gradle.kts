@@ -81,6 +81,7 @@ dependencies {
     api(Dependency.hilt)
     kapt(Dependency.hilt_compiler)
     api(Dependency.hilt_nav)
+    api(Dependency.hilt_nav_compose)
 
     api(Dependency.material_extended)
 

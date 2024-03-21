@@ -15,6 +15,8 @@ object Dependency {
     const val hilt = "com.google.dagger:hilt-android:${Version.hilt_version}"
     const val hilt_compiler = "com.google.dagger:hilt-android-compiler:${Version.hilt_version}"
     const val hilt_nav = "androidx.hilt:hilt-navigation-fragment:${Version.hilt_nav_version}"
+    const val hilt_nav_compose = "androidx.hilt:hilt-navigation-compose:${Version.hilt_nav_version}"
+
 
     const val material_extended = "androidx.compose.material:material-icons-extended"
 
