@@ -11,9 +11,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    //usecase
-): ViewModel() {
     private val removeUseCase: RemoveUseCase,
+    private val getFriendsUseCase: GetFriendsUseCase
+) : ViewModel() {
 
     fun remove(friend: Friend) {
         viewModelScope.launch {
@@ -21,4 +21,9 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun fetchFriends() = viewModelScope.launch {
+        getFriendsUseCase.invoke().collect{
+            //add state
+        }
+    }
 }
