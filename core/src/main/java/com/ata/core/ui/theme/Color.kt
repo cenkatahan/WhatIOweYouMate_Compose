@@ -9,7 +9,7 @@ val OweBackground = OweColor(
 
 val OweGreen = OweColor(
     lightColor = Color(0xFF008A06),
-    darkColor = Color(0xFF02EC0C)
+    darkColor = Color(0xFF8DE165)
 )
 
 val OweYellow = OweColor(
