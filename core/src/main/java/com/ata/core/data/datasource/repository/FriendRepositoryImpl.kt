@@ -4,7 +4,9 @@ import com.ata.core.data.datasource.local.dao.FriendDao
 import com.ata.core.data.datasource.local.entity.Friend
 import com.ata.core.domain.repository.FriendRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class FriendRepositoryImpl @Inject constructor(
     private val dao: FriendDao
 ) : FriendRepository {

@@ -17,13 +17,13 @@ object DbModule {
 
     @Provides
     @Singleton
-    fun provideAppDataBase(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, FriendDataBase::class.java, TABLE_FRIEND)
-            .allowMainThreadQueries()
+    fun provideAppDataBase(@ApplicationContext applicationContext: Context) =
+        Room.databaseBuilder(applicationContext, FriendDataBase::class.java, TABLE_FRIEND)
+//            .fallbackToDestructiveMigration()
+//            .allowMainThreadQueries()
             .build()
 
     @Provides
-    @Singleton
     fun provideDao(dataBase: FriendDataBase) = dataBase.friendDao()
 
 

@@ -96,7 +96,10 @@ fun HomeScreen(
         ) {
             OweOutlinedButton(
                 modifier = Modifier.fillMaxWidth(0.4f),
-                text = "Delete"
+                text = "Delete",
+                onClick = {
+//                    viewModel::removeAll
+                }
             )
             Spacer(modifier = Modifier.width(16.dp))
             OweButton(
@@ -112,15 +115,15 @@ fun HomeScreen(
 
 //@Preview(name = "Light Mode")
 //@Preview(name = "Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
-@Preview(name = "Full Preview", showSystemUi = true)
-@Preview(
-    name = "Full Preview - Dark Mode",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    showSystemUi = true
-)
-@Composable
-private fun OweButtonPrev() {
-    HomeScreen(
-        navigateToAdd = {}
-    )
-}
+//@Preview(name = "Full Preview", showSystemUi = true)
+//@Preview(
+//    name = "Full Preview - Dark Mode",
+//    uiMode = Configuration.UI_MODE_NIGHT_YES,
+//    showSystemUi = true
+//)
+//@Composable
+//private fun OweButtonPrev() {
+//    HomeScreen(
+//        navigateToAdd = {}
+//    )
+//}

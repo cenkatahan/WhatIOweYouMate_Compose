@@ -84,7 +84,8 @@ fun AddScreen(
             ) {
                 OweOutlinedButton(
                     modifier = Modifier.fillMaxWidth(0.4f),
-                    text = "Dismiss"
+                    text = "Dismiss",
+                    onClick = {}
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 OweButton(
