@@ -16,6 +16,7 @@ import com.ata.core.ui.theme.OweYellow
 fun OweButton(
     modifier: Modifier = Modifier,
     text: String,
+    onClick: () -> Unit
 ) {
     Button(
         modifier = modifier,
@@ -25,7 +26,7 @@ fun OweButton(
         ),
 //        elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(8.dp),
-        onClick = { /*TODO*/ }
+        onClick = onClick
     ) {
         Text(text = text)
     }
@@ -37,5 +38,5 @@ fun OweButton(
 @Preview(name = "Full Preview - Dark Mode", uiMode = Configuration.UI_MODE_NIGHT_YES, showSystemUi = true)
 @Composable
 private fun OweButtonPrev() {
-    OweButton(text = "BUTTON")
+//    OweButton(text = "BUTTON")
 }

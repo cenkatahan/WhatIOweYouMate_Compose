@@ -79,8 +79,11 @@ dependencies {
     implementation(project(Module.update))
     implementation(project(Module.summary))
 
-    implementation(Dependency.hilt)
+    api(Dependency.hilt)
     kapt(Dependency.hilt_compiler)
-    implementation(Dependency.hilt_nav)
+    kapt(Dependency.hilt_compiler_compose)
+    api(Dependency.hilt_nav_compose)
+
+    kapt(Dependency.room_compiler)
 
 }

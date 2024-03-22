@@ -22,15 +22,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ata.core.ui.component.OweTextField
 import com.ata.core.ui.component.OweButton
 import com.ata.core.ui.component.OweOutlinedButton
 import com.ata.core.ui.component.OweText
 import com.ata.core.ui.theme.OweGreen
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AddScreen() {
+fun AddScreen(
+    viewModel: AddViewModel = hiltViewModel()
+) {
 
     Column(
         modifier = Modifier.padding(16.dp)
@@ -82,12 +84,16 @@ fun AddScreen() {
             ) {
                 OweOutlinedButton(
                     modifier = Modifier.fillMaxWidth(0.4f),
-                    text = "Dismiss"
+                    text = "Dismiss",
+                    onClick = {}
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 OweButton(
                     modifier = Modifier.fillMaxWidth(1f),
-                    text = "Add"
+                    text = "Add",
+                    onClick = {
+//                        viewModel.save()
+                    }
                 )
             }
         }

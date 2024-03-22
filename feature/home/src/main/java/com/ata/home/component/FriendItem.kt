@@ -27,7 +27,9 @@ import com.ata.core.ui.theme.OweBackground
 import com.ata.core.ui.theme.OweGreen
 
 @Composable
-fun FriendItem() {
+fun FriendItem(
+    onClickRemove: (Int) -> Unit
+) {
     Row(
         modifier = Modifier
             .clickable { }
@@ -72,7 +74,11 @@ fun FriendItem() {
             )
         }
 
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(
+            onClick = {
+//                onClickRemove(id)
+            }
+        ) {
             Icon(
                 imageVector = Icons.Rounded.Delete,
                 tint = OweBackground.color(),
@@ -91,5 +97,7 @@ fun FriendItem() {
 )
 @Composable
 private fun OweButtonPrev() {
-    FriendItem()
+    FriendItem(
+        onClickRemove = {}
+    )
 }

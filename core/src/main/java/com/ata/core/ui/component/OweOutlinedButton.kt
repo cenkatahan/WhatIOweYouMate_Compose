@@ -15,11 +15,12 @@ import com.ata.core.ui.theme.OweGreen
 @Composable
 fun OweOutlinedButton(
     modifier: Modifier = Modifier,
-    text: String
+    text: String,
+    onClick: () -> Unit
 ) {
     OutlinedButton(
         modifier = modifier,
-        onClick = { /*TODO*/ },
+        onClick = onClick,
         colors = ButtonDefaults.outlinedButtonColors(
             contentColor = OweGreen.color()
         ),
@@ -40,5 +41,5 @@ fun OweOutlinedButton(
 )
 @Composable
 private fun OweButtonPrev() {
-    OweOutlinedButton(text = "BUTTON")
+    OweOutlinedButton(text = "BUTTON", onClick = {})
 }

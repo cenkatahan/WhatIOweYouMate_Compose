@@ -75,12 +75,13 @@ dependencies {
     api(Dependency.nav_compose)
 
     api(Dependency.room_runtime)
-    annotationProcessor(Dependency.room_compiler)
-    kapt(Dependency.room_compiler_kapt)
+    kapt(Dependency.room_compiler)
+    api(Dependency.room_ktx)
 
     api(Dependency.hilt)
     kapt(Dependency.hilt_compiler)
-    api(Dependency.hilt_nav)
+    kapt(Dependency.hilt_compiler_compose)
+    api(Dependency.hilt_nav_compose)
 
     api(Dependency.material_extended)
 
