@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Cancel
 import androidx.compose.material.icons.rounded.Money
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -57,9 +59,17 @@ fun UpdateScreen(
                         contentDescription = null,
                         tint = OweGreen.color()
                     )
-                }) {
-
-            }
+                },
+                trailingIcon = {
+                    IconButton(onClick = { }) {
+                        Icon(
+                            imageVector = Icons.Rounded.Cancel,
+                            contentDescription = null,
+                            tint = OweGreen.color()
+                        )
+                    }
+                }
+            )
             Spacer(modifier = Modifier.height(16.dp))
             OweTextField(
                 value = "",
@@ -71,9 +81,17 @@ fun UpdateScreen(
                         contentDescription = null,
                         tint = OweGreen.color()
                     )
-                }) {
-
-            }
+                },
+                trailingIcon = {
+                    IconButton(onClick = { }) {
+                        Icon(
+                            imageVector = Icons.Rounded.Cancel,
+                            contentDescription = null,
+                            tint = OweGreen.color()
+                        )
+                    }
+                }
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 

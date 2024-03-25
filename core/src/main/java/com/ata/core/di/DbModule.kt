@@ -19,8 +19,8 @@ object DbModule {
     @Singleton
     fun provideAppDataBase(@ApplicationContext applicationContext: Context) =
         Room.databaseBuilder(applicationContext, FriendDataBase::class.java, TABLE_FRIEND)
-//            .fallbackToDestructiveMigration()
-//            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
             .build()
 
     @Provides

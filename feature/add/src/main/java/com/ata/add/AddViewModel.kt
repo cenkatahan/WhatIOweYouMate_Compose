@@ -5,23 +5,29 @@ import androidx.lifecycle.viewModelScope
 import com.ata.core.data.datasource.local.entity.Friend
 import com.ata.core.domain.usecase.SaveFriendUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AddViewModel @Inject constructor(
-    private val saveFriendUseCase: SaveFriendUseCase
-): ViewModel() {
-    //todo add state.?
-    suspend fun save(friend: Friend){
+    private val saveFriendUseCase: SaveFriendUseCase,
+) : ViewModel() {
+    private var _addFriendState: MutableStateFlow<AddUIState<Friend>> =
+        MutableStateFlow(AddUIState.Loading)
+    val addFriendState = _addFriendState.asStateFlow()
+    fun save(friend: Friend) {
         viewModelScope.launch {
             try {
-                saveFriendUseCase.invoke(friend)
-                //state = Success
+                saveFriendUseCase.invoke(friend).collect{
+                    _addFriendState.value = AddUIState.Success()
+                }
             } catch (e: Exception) {
-                //sate = Error
+                _addFriendState.value = AddUIState.Error(e.message!!)
             }
 
         }
     }
 }
+

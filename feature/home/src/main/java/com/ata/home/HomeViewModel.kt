@@ -9,7 +9,6 @@ import com.ata.core.domain.usecase.RemoveUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import com.ata.home.HomeUIState.Loading
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,9 +38,7 @@ class HomeViewModel @Inject constructor(
         try {
 
             getFriendsUseCase.invoke().collect {
-                //add state
                 _friendsState.value = HomeUIState.Success(it)
-                _friendsState.value = HomeUIState.Success(listOf(Friend(name = "ATAHAN")))
             }
         } catch (e: Exception) {
             _friendsState.value = HomeUIState.Error(e.message!!)

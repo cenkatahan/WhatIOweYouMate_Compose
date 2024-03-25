@@ -25,7 +25,17 @@ fun AppNav(
                 }
             )
         }
-        composable(route = Screen.Add.name) { AddScreen() }
+        composable(route = Screen.Add.name) {
+            AddScreen(
+                navigateBack = {
+                    navController.navigate(Screen.Home.name) {
+                        popUpTo(Screen.Home.name) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
         composable(route = Screen.Update.name) { UpdateScreen() }
         composable(route = Screen.Summary.name) { SummaryScreen() }
     }
