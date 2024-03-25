@@ -28,6 +28,8 @@ import com.ata.core.ui.theme.OweGreen
 
 @Composable
 fun FriendItem(
+    name: String,
+    expense: Int,
     onClickRemove: (Int) -> Unit
 ) {
     Row(
@@ -52,7 +54,7 @@ fun FriendItem(
             )
             Spacer(modifier = Modifier.width(8.dp))
             OweText(
-                text = "Jane Cooper",
+                text = name,
                 color = OweBackground.color()
             )
 
@@ -69,7 +71,7 @@ fun FriendItem(
             )
             Spacer(modifier = Modifier.width(8.dp))
             OweText(
-                text = "124",
+                text = expense.toString(),
                 color = OweBackground.color()
             )
         }
@@ -98,6 +100,8 @@ fun FriendItem(
 @Composable
 private fun OweButtonPrev() {
     FriendItem(
+        name = "ATAHAN OZBEK",
+        expense = 22,
         onClickRemove = {}
     )
 }

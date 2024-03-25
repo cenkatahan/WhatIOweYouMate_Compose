@@ -3,6 +3,7 @@ package com.ata.core.data.datasource.local.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.ata.core.data.datasource.local.entity.Friend
@@ -10,7 +11,7 @@ import com.ata.core.util.TableConstants.TABLE_FRIEND
 
 @Dao
 interface FriendDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(friend: Friend)
 
     @Query("SELECT * FROM $TABLE_FRIEND WHERE id=:id")
