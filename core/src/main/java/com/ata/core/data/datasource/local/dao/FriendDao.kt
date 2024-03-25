@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.ata.core.data.datasource.local.entity.Friend
+import com.ata.core.util.Resource
 import com.ata.core.util.TableConstants.TABLE_FRIEND
 
 @Dao

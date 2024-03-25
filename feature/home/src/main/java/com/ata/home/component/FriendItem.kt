@@ -22,15 +22,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ata.core.data.datasource.local.entity.Friend
 import com.ata.core.ui.component.OweText
 import com.ata.core.ui.theme.OweBackground
 import com.ata.core.ui.theme.OweGreen
 
 @Composable
 fun FriendItem(
-    name: String,
-    expense: Int,
-    onClickRemove: (Int) -> Unit
+    friend: Friend,
+    onClickRemove: (Friend) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -54,7 +54,7 @@ fun FriendItem(
             )
             Spacer(modifier = Modifier.width(8.dp))
             OweText(
-                text = name,
+                text = friend.name,
                 color = OweBackground.color()
             )
 
@@ -71,15 +71,13 @@ fun FriendItem(
             )
             Spacer(modifier = Modifier.width(8.dp))
             OweText(
-                text = expense.toString(),
+                text = friend.payment.toString(),
                 color = OweBackground.color()
             )
         }
 
         IconButton(
-            onClick = {
-//                onClickRemove(id)
-            }
+            onClick = { onClickRemove(friend) }
         ) {
             Icon(
                 imageVector = Icons.Rounded.Delete,
@@ -100,8 +98,7 @@ fun FriendItem(
 @Composable
 private fun OweButtonPrev() {
     FriendItem(
-        name = "ATAHAN OZBEK",
-        expense = 22,
+        friend = Friend(),
         onClickRemove = {}
     )
 }

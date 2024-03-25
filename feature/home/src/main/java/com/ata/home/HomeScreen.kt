@@ -29,7 +29,7 @@ fun HomeScreen(
     navigateToAdd: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-//    val friendListState = viewModel.friendsState.collectAsState().value
+    val friendListState = viewModel.friendsState.collectAsState().value
 
     Column(
         modifier = modifier
@@ -47,7 +47,7 @@ fun HomeScreen(
         OweText(text = "Total  Expense: \$0.0")
         Spacer(modifier = Modifier.height(16.dp))
 
-        when (val state = viewModel.friendsState.collectAsState().value) {
+        when (friendListState) {
             is HomeUIState.Error -> {
 //                EmptyListSection(state.message)
             }
@@ -57,15 +57,16 @@ fun HomeScreen(
                 LazyColumn(
                     modifier = Modifier.fillMaxHeight(0.9f)
                 ) {
-                    items(state.data.size, key = {
-                        state.data[it].id
+
+                    items(friendListState.data.size, key = {
+                        friendListState.data[it].id
                     }) {
                         Spacer(modifier = Modifier.height(8.dp))
 
+                        val friend = friendListState.data[it]
                         FriendItem(
-                            name = state.data[it].name,
-                            expense = state.data[it].payment,
-                            onClickRemove = {}
+                            friend = friend,
+                            onClickRemove = { viewModel.remove(friend) }
                         )
                         Spacer(modifier = Modifier.height(8.dp))
 
