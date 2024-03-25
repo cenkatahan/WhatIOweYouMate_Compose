@@ -28,9 +28,20 @@ class HomeViewModel @Inject constructor(
         MutableStateFlow(HomeUIState.Loading)
     val friendsState = _friendsState.asStateFlow()
 
+    private val _removeFriendState: MutableStateFlow<RemoveState<Friend>> =
+        MutableStateFlow(RemoveState.Loading)
+    val removeFriendState = _removeFriendState.asStateFlow()
+
     fun remove(friend: Friend) {
         viewModelScope.launch(Dispatchers.Default) {
-            removeUseCase.invoke(friend)
+            try {
+                removeUseCase.invoke(friend).collect {
+                    _removeFriendState.value = RemoveState.Success()
+                    fetchFriends()
+                }
+            } catch (e: Exception) {
+                _removeFriendState.value = RemoveState.Error(e.message!!)
+            }
         }
     }
 
@@ -51,4 +62,10 @@ class HomeViewModel @Inject constructor(
             removeFriendsUseCase.invoke()
         }
     }
+}
+
+sealed class RemoveState<out T: Any?> {
+    data class Success<out T: Any>(val data: T? = null) : RemoveState<T>()
+    data class Error(val message: String) : RemoveState<Nothing>()
+    object Loading : RemoveState<Nothing>()
 }

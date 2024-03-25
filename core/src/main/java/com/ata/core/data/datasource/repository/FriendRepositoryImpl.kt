@@ -3,6 +3,7 @@ package com.ata.core.data.datasource.repository
 import com.ata.core.data.datasource.local.dao.FriendDao
 import com.ata.core.data.datasource.local.entity.Friend
 import com.ata.core.domain.repository.FriendRepository
+import com.ata.core.util.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
 
