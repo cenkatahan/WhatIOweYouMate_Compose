@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -27,6 +28,7 @@ import com.ata.home.component.TopBar
 fun HomeScreen(
     modifier: Modifier = Modifier,
     navigateToAdd: () -> Unit,
+    navigateToEdit: (Int) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val friendListState = viewModel.friendsState.collectAsState().value
@@ -53,8 +55,9 @@ fun HomeScreen(
             }
 
             is HomeUIState.Loading -> {
-//                Progress Bar
+                CircularProgressIndicator()
             }
+
             is HomeUIState.Success -> {
                 LazyColumn(
                     modifier = Modifier.fillMaxHeight(0.9f)
@@ -68,6 +71,7 @@ fun HomeScreen(
                         val friend = friendListState.data[it]
                         FriendItem(
                             friend = friend,
+                            onClickToEdit = { navigateToEdit(friend.id) },
                             onClickRemove = { viewModel.remove(friend) }
                         )
                         Spacer(modifier = Modifier.height(8.dp))
