@@ -72,7 +72,7 @@ fun FriendItem(
             )
             Spacer(modifier = Modifier.width(8.dp))
             OweText(
-                text = friend.payment.toString(),
+                text = friend.expense.toString(),
                 color = OweBackground.color()
             )
         }

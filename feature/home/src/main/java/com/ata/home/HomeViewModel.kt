@@ -46,7 +46,7 @@ class HomeViewModel @Inject constructor(
                         RemoveUIState.Success(resource.data!!)
                 }
             }
-                fetchFriends()
+            fetchFriends()
         }
     }
 

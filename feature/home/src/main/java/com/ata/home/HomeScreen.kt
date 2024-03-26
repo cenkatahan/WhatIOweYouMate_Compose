@@ -46,8 +46,7 @@ fun HomeScreen(
             }
         )
 
-        OweText(text = "Total  Expense: \$0.0")
-        Spacer(modifier = Modifier.height(16.dp))
+
 
         when (friendListState) {
             is HomeUIState.Error -> {
@@ -62,10 +61,15 @@ fun HomeScreen(
                 LazyColumn(
                     modifier = Modifier.fillMaxHeight(0.9f)
                 ) {
-
+                    item {
+                        val totalExpense = friendListState.data.sumOf { it.expense }
+                        OweText(text = "Total  Expense: $totalExpense")
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
                     items(friendListState.data.size, key = {
                         friendListState.data[it].id
                     }) {
+
                         Spacer(modifier = Modifier.height(8.dp))
 
                         val friend = friendListState.data[it]
