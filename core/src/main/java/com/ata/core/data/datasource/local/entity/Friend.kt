@@ -15,5 +15,5 @@ import kotlinx.parcelize.Parcelize
 data class Friend(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = COL_ID) val id: Int = 0,
     @ColumnInfo(name = COL_NAME) val name: String = "",
-    @ColumnInfo(name = COL_PAYMENT) val payment: Int = 0
+    @ColumnInfo(name = COL_PAYMENT) val expense: Int = 0
 ): Parcelable

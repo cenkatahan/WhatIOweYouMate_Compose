@@ -67,7 +67,7 @@ fun EditScreen(
                 mutableStateOf(friendState.data.name)
             }
             var expense by remember {
-                mutableStateOf(friendState.data.payment)
+                mutableStateOf(friendState.data.expense)
             }
 
             Column(
