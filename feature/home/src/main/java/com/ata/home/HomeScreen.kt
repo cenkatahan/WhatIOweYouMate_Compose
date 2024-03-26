@@ -52,7 +52,9 @@ fun HomeScreen(
 //                EmptyListSection(state.message)
             }
 
-            is HomeUIState.Loading -> {}
+            is HomeUIState.Loading -> {
+//                Progress Bar
+            }
             is HomeUIState.Success -> {
                 LazyColumn(
                     modifier = Modifier.fillMaxHeight(0.9f)
