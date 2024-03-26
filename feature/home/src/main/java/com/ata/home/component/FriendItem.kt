@@ -30,11 +30,12 @@ import com.ata.core.ui.theme.OweGreen
 @Composable
 fun FriendItem(
     friend: Friend,
+    onClickToEdit: (Int) -> Unit,
     onClickRemove: (Friend) -> Unit
 ) {
     Row(
         modifier = Modifier
-            .clickable { }
+            .clickable { onClickToEdit(friend.id) }
             .clip(shape = RoundedCornerShape(8.dp))
             .background(color = OweGreen.color())
             .fillMaxWidth()
@@ -99,6 +100,7 @@ fun FriendItem(
 private fun OweButtonPrev() {
     FriendItem(
         friend = Friend(),
+        onClickToEdit = {},
         onClickRemove = {}
     )
 }

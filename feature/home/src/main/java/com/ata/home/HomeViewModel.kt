@@ -45,8 +45,8 @@ class HomeViewModel @Inject constructor(
                     is Resource.Success -> _removeFriendState.value =
                         RemoveUIState.Success(resource.data!!)
                 }
-
             }
+                fetchFriends()
         }
     }
 

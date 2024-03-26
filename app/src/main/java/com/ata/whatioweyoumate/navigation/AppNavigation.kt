@@ -1,14 +1,19 @@
 package com.ata.whatioweyoumate.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.ata.add.AddScreen
 import com.ata.home.HomeScreen
 import com.ata.summary.SummaryScreen
-import com.ata.update.UpdateScreen
+import com.ata.update.EditScreen
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun AppNav(
     navController: NavHostController
@@ -16,35 +21,56 @@ fun AppNav(
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.name
+        startDestination = Screen.Home.route
     ) {
-        composable(route = Screen.Home.name) {
+        composable(route = Screen.Home.route) {
             HomeScreen(
                 navigateToAdd = {
-                    navController.navigate(Screen.Add.name)
+                    navController.navigate(Screen.Add.route)
+                },
+                navigateToEdit = {
+                    navController.navigate(Screen.Update.withArgs(it.toString()))
                 }
             )
         }
-        composable(route = Screen.Add.name) {
+        composable(route = Screen.Add.route) {
             AddScreen(
                 navigateBack = {
-                    navController.navigate(Screen.Home.name) {
-                        popUpTo(Screen.Home.name) {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Home.route) {
                             inclusive = true
                         }
                     }
                 }
             )
         }
-        composable(route = Screen.Update.name) { UpdateScreen() }
-        composable(route = Screen.Summary.name) { SummaryScreen() }
+
+        composable(
+            route = "${Screen.Update.route}/{friendId}",
+            arguments = listOf(
+                navArgument("friendId") {
+                    type = NavType.IntType
+                    defaultValue = 0
+                    nullable = false
+                }
+            )
+        ) { backStack ->
+
+            val id = backStack.arguments?.getInt("friendId")
+            EditScreen(
+                friendId = id!!,
+                navigateBack = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Home.route) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+
+        }
+
+        composable(route = Screen.Summary.route) { SummaryScreen() }
     }
 
-}
-
-enum class Screen {
-    Home,
-    Add,
-    Update,
-    Summary
 }
