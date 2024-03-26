@@ -6,6 +6,7 @@ import com.ata.core.data.datasource.local.entity.Friend
 import com.ata.core.domain.usecase.GetFriendsUseCase
 import com.ata.core.domain.usecase.RemoveFriendsUseCase
 import com.ata.core.domain.usecase.RemoveUseCase
+import com.ata.core.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,19 +29,23 @@ class HomeViewModel @Inject constructor(
         MutableStateFlow(HomeUIState.Loading)
     val friendsState = _friendsState.asStateFlow()
 
-    private val _removeFriendState: MutableStateFlow<RemoveState<Friend>> =
-        MutableStateFlow(RemoveState.Loading)
+    private val _removeFriendState: MutableStateFlow<RemoveUIState> =
+        MutableStateFlow(RemoveUIState.Loading)
     val removeFriendState = _removeFriendState.asStateFlow()
 
     fun remove(friend: Friend) {
         viewModelScope.launch(Dispatchers.Default) {
-            try {
-                removeUseCase.invoke(friend).collect {
-                    _removeFriendState.value = RemoveState.Success()
-                    fetchFriends()
+
+            removeUseCase.invoke(friend).collect { resource ->
+                when (resource) {
+                    is Resource.Error -> _removeFriendState.value =
+                        RemoveUIState.Error(resource.message!!)
+
+                    is Resource.Loading -> _removeFriendState.value = RemoveUIState.Loading
+                    is Resource.Success -> _removeFriendState.value =
+                        RemoveUIState.Success(resource.data!!)
                 }
-            } catch (e: Exception) {
-                _removeFriendState.value = RemoveState.Error(e.message!!)
+
             }
         }
     }
@@ -64,8 +69,8 @@ class HomeViewModel @Inject constructor(
     }
 }
 
-sealed class RemoveState<out T: Any?> {
-    data class Success<out T: Any>(val data: T? = null) : RemoveState<T>()
-    data class Error(val message: String) : RemoveState<Nothing>()
-    object Loading : RemoveState<Nothing>()
+sealed class RemoveUIState {
+    data class Success(val data: Friend) : RemoveUIState()
+    data class Error(val message: String) : RemoveUIState()
+    object Loading : RemoveUIState()
 }

@@ -10,8 +10,8 @@ import javax.inject.Inject
 class RemoveUseCase @Inject constructor(
     private val repository: FriendRepository
 ) {
-    operator fun invoke(friend: Friend): Flow<Unit> {
-        return flow { emit(repository.remove(friend)) }
+    operator fun invoke(friend: Friend): Flow<Resource<Friend>> {
+        return flow { repository.remove(friend) }
     }
 
 }
