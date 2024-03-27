@@ -1,6 +1,7 @@
 package com.ata.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,18 +10,26 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.GroupOff
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ata.core.ui.component.OweButton
 import com.ata.core.ui.component.OweOutlinedButton
 import com.ata.core.ui.component.OweText
 import com.ata.core.ui.theme.OweBackground
+import com.ata.core.ui.theme.OweGreen
+import com.ata.home.component.EmptyList
 import com.ata.home.component.FriendItem
 import com.ata.home.component.TopBar
 
@@ -50,7 +59,7 @@ fun HomeScreen(
 
         when (friendListState) {
             is HomeUIState.Error -> {
-//                EmptyListSection(state.message)
+                EmptyList(msg = "Error. List is Empty.")
             }
 
             is HomeUIState.Loading -> {
@@ -66,6 +75,13 @@ fun HomeScreen(
                         OweText(text = "Total  Expense: $totalExpense")
                         Spacer(modifier = Modifier.height(16.dp))
                     }
+
+                    if (friendListState.data.isEmpty()) {
+                        item {
+                            EmptyList(msg = "List is Empty.")
+                        }
+                    }
+
                     items(friendListState.data.size, key = {
                         friendListState.data[it].id
                     }) {
